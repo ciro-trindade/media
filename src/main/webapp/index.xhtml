@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cálculo da Média</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText value="#{alunoBean.aluno.nome}" id="nome" />
+			<h:outputLabel value="Nota da 1a prova:" for="p1" />
+			<h:inputText value="#{alunoBean.aluno.p1}" required="true" id="p1" 
+					requiredMessage="A 1ª nota é obrigatória"
+					converterMessage="O valor deve ser um número real" >
+				<f:validateLongRange minimum="0" maximum="10"/>
+				<f:convertNumber minFractionDigits="2"/>
+			</h:inputText>
+					
+			<h:outputLabel value="Nota da 2a prova:" for="p2" />
+			<h:inputText value="#{alunoBean.aluno.p2}" required="true" id="p2" >
+				<f:validateLongRange minimum="0" maximum="10"/>
+				<f:convertNumber minFractionDigits="2"/>
+			</h:inputText>
+		</h:panelGrid>
+		<h:commandButton value="Calcular média"
+			action="#{alunoBean.calcularMedia}" />
+		<h:messages />
+	</h:form>
+	    
+</h:body>
+</html>
